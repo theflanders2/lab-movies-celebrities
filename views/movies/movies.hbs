@@ -1,0 +1,13 @@
+<h2>Movies</h2>
+<ul>
+    <li>
+        <a href="/">Home</a>
+    </li>
+    <li>
+        <a href="/movies/create">Add new movie</a>
+    </li>
+</ul>
+
+{{#each allMoviesFromDb}}
+<p>{{title}}</p>
+{{/each}}

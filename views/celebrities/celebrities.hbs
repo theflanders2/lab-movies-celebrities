@@ -1,5 +1,13 @@
+<ul>
+    <li>
+        <a href="/">Home</a>
+    </li>
+    <li>
+        <a href="/celebrities/create">Add new celebrity</a>
+    </li>
+</ul>
 <h2>Celebrities</h2>
 
-{{#each celebrities}}
-<p>{{name}}</p>
+{{#each allCelebsFromDb}}
+<p><b>{{name}}</b>, {{occupation}}</p>
 {{/each}}

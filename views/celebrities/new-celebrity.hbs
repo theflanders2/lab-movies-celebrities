@@ -1,13 +1,28 @@
+<ul>
+    <li>
+        <a href="/">Home</a>
+    </li>
+    <li>
+        <a href="/celebrities">Celebrities</a>
+    </li>
+</ul>
+
 <h2>Add a New Celebrity</h2>
-<form action="/celebrities/create" method="post">
-    <label> Name
-        <input type="text" name="name" placeholder="Eddie Murphy">
+<form action="/celebrities/create" method="POST">
+    <label> Name:
+        <input type="text" name="name" placeholder="e.g. Eddie Murphy">
     </label>
-    <label> Occupation
-        <input type="text" name="occupation" placeholder="Philanthropist">
+    <label> Occupation:
+        <input type="text" name="occupation" placeholder="e.g. Philanthropist">
     </label>
-    <label> Catch Phrase
-        <input type="text" name="catchPhrase" placeholder="Live and let live.">
+    <label> Catch Phrase:
+        <input type="text" name="catchPhrase" placeholder="e.g. Live and let live.">
     </label>
     <button type="submit">Add new celebrity</button>
 </form>
+
+<div>
+  {{#if message}}
+    <p style="color:red;"><b>{{message}}</b></p>
+  {{/if}}
+</div>

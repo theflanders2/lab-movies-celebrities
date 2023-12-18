@@ -1,0 +1,27 @@
+<h2>Add a New Movie</h2>
+<form action="/movies/create" method="POST">
+    <label> Title:
+        <input type="text" name="title" placeholder="e.g. Die Hard II">
+    </label>
+    <label> Genre:
+        <input type="text" name="genre" placeholder="e.g. Action">
+    </label>
+    <label> Plot:
+        <input type="text" name="plot" placeholder="e.g. Back with a vengeance ">
+    </label>
+    
+    <label for="cast">Select cast members</label>
+    <select name="cast" id="cast" multiple>
+        {{#each allCelebsFromDb}}
+            <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+    </select>
+    
+    <button type="submit">Add new movie</button>
+</form>
+
+<div>
+  {{#if message}}
+    <p style="color:red;"><b>{{message}}</b></p>
+  {{/if}}
+</div>
