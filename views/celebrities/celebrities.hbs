@@ -9,5 +9,10 @@
 <h2>Celebrities</h2>
 
 {{#each allCelebsFromDb}}
-<p><b>{{name}}</b>, {{occupation}}</p>
+<p><a href="/celebrities/{{_id}}"><b>{{name}}</b>, {{occupation}}</a></p>
 {{/each}}
+
+{{!-- Added <a href="/celebrities/{{_id}}"></a> 
+to #each allCelebsFromDb loop for the BONUS
+This makes the celebrity clickable and takes you to their 
+details page --}}

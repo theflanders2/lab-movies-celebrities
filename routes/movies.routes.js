@@ -12,6 +12,10 @@ router.get('/movies/create', (req, res) => {
         .then((allCelebsFromDb) => {
             res.render('movies/new-movie', { allCelebsFromDb })
         })
+        .catch(error => {
+            console.log('Error while showing form to create a new movie: ', error);
+            next(error);
+        });
 });
 
 //POST route to send the data from the form to this route to create the movie and save it to the database
@@ -32,13 +36,16 @@ router.post('/movies/create', (req, res, next) => {
             } 
             else {
                 res.render("movies/new-movie", {
-                message: "This movie already exists in the database.",
+                message: "This movie already exists in the database."
                 });
                 console.log('The movie has not been added. The movie already exists in the database.');
                 return;
             }
         })
-        .catch((error) => next(error));
+        .catch(error => {
+            console.log('Error while sending data from form to route /movies/movies: ', error);
+            next(error);
+        });
   });
 
 //GET route to display a list of all movies
@@ -49,7 +56,10 @@ router.get('/movies/movies', (req, res, next) => {
             console.log(`There are currently ${allMoviesFromDb.length} movies in the database.`);
             console.log(`The ${allMoviesFromDb.length} movies in the database are:`, allMoviesFromDb);
         })
-        .catch((error) => next(error));
+        .catch(error => {
+            console.log('Error while displaying list of movies: ', error);
+            next(error);
+        });
 });
 
 //GET route to display a specific movie on the movie-details page
@@ -72,12 +82,13 @@ router.post('/movies/:movieId/delete', (req, res, next) => {
     Movie.findByIdAndRemove(movieId)
         .then(() => res.redirect('/movies/movies'))
         .catch(error => {
-            console.log('Error while deleting movie: ', error);
+            console.log('Error while removing movie: ', error);
             next(error);
         });
 });
 
 //GET route to find the movie we would like to edit in the database
+//Show a pre-filled form to update a movie
 router.get('/movies/:movieId/edit', (req, res, next) => {
     const { movieId } = req.params;
 
@@ -99,14 +110,15 @@ router.get('/movies/:movieId/edit', (req, res, next) => {
 });
 
 //POST to submit the form to update the movie in the database
+//Save the updated movie to the database
 router.post('/movies/:movieId/edit', (req, res, next) => {
-    const { movieId} = req.params;
+    const { movieId } = req.params;
     const { title, genre, plot, cast } = req.body;
 
     Movie.findByIdAndUpdate(movieId, { title, genre, plot, cast })
-        .then((movieToEdit) => {
-            console.log(movieToEdit);
-            res.redirect('movies/movie-details')
+        .then((foundMovie) => {
+            console.log(foundMovie);
+            res.redirect(`/movies/${foundMovie._id}`)
         })
         .catch(error => {
             console.log('Error while updating movie: ', error);

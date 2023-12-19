@@ -1,0 +1,15 @@
+<ul>
+    <li>
+        <a href="/celebrities">Back</a>
+    </li>
+</ul>
+<h2>{{foundCelebrity.name}}</h2>
+<p><b>Occupation:</b> {{foundCelebrity.occupation}}</p>
+<p><b>Catch Phrase:</b> {{foundCelebrity.catchPhrase}}</p>
+
+<a href="/celebrities/{{foundCelebrity._id}}/edit">Edit celebrity details</a>
+<br>
+<br>
+<form action="/celebrities/{{foundCelebrity._id}}/delete" method="POST">
+    <button type="submit">Remove celebrity</button>
+</form>

@@ -6,10 +6,15 @@
 <h2>{{foundMovie.title}}</h2>
 <p><b>Genre:</b> {{foundMovie.genre}}</p>
 <p><b>Plot:</b> {{foundMovie.plot}}</p>
-<p><b><u>Cast:</u></b></p> 
+<p><b><u>Cast:</u></b> 
     {{#each foundMovie.cast}}
-        <p><b>{{name}}</b>, {{occupation}}</p>
-        <p>Catch phrase: {{catchPhrase}}</p>
+        <br>
+        <b>{{name}}</b>,
+        {{occupation}}
+        <br>
+        <u>Catch phrase</u>: {{catchPhrase}}
+        <br>
+        {{!-- <p>Catch phrase: {{catchPhrase}}</p> --}}
     {{/each}}
 </p>
 

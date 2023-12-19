@@ -1,0 +1,19 @@
+<ul>
+    <li>
+        <a href="/celebrities/{{foundCelebrity._id}}">Back</a>
+    </li>
+</ul>
+<h2>Edit celebrity: {{foundCelebrity.name}}</h2>
+
+<form action="/celebrities/{{foundCelebrity._id}}/edit" method="POST">
+    <label> Name:
+        <input type="text" name="name" value="{{foundCelebrity.name}}">
+    </label>
+    <label> Occupation:
+        <input type="text" name="occupation" value="{{foundCelebrity.occupation}}">
+    </label>
+    <label> Catch Phrase:
+        <textarea type="text" name="catchPhrase">{{foundCelebrity.catchPhrase}}</textarea>
+    </label>
+    <button type="submit">Save changes</button>
+</form>
