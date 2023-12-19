@@ -1,0 +1,21 @@
+<ul>
+    <li>
+        <a href="/movies/movies">Back</a>
+    </li>
+</ul>
+<h2>{{foundMovie.title}}</h2>
+<p><b>Genre:</b> {{foundMovie.genre}}</p>
+<p><b>Plot:</b> {{foundMovie.plot}}</p>
+<p><b><u>Cast:</u></b></p> 
+    {{#each foundMovie.cast}}
+        <p><b>{{name}}</b>, {{occupation}}</p>
+        <p>Catch phrase: {{catchPhrase}}</p>
+    {{/each}}
+</p>
+
+<a href="/movies/{{foundMovie._id}}/edit">Edit movie details</a>
+<br>
+<br>
+<form action="/movies/{{foundMovie._id}}/delete" method="POST">
+    <button type="submit">Remove movie</button>
+</form>
